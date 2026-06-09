@@ -28,4 +28,21 @@ public class JwtUtil {
                 .getBody()
                 .getSubject();
     }
+        public String extractUsername(String token) {
+            return extractEmail(token);
+        }
+
+        public boolean validateToken(String token) {
+            try {
+                Jwts.parserBuilder()
+                        .setSigningKey(key)
+                        .build()
+                        .parseClaimsJws(token);
+                return true;
+            } catch (Exception e) {
+                return false;
+            }
+
+
+    }
 }
