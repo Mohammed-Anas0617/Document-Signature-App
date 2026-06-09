@@ -8,6 +8,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.nio.file.*;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DocumentService {
@@ -36,5 +38,11 @@ public class DocumentService {
         document.setUploadedBy(username);
 
         return documentRepository.save(document);
+    }
+    public List<Document> getDocumentsByUser(String username) {
+        return documentRepository.findByUploadedBy(username);
+    }
+    public Optional<Document> getDocumentById(Long id) {
+        return documentRepository.findById(id);
     }
 }
