@@ -24,4 +24,23 @@ public class SignatureController {
     public List<Signature> getSignatures(@PathVariable Long docId) {
         return signatureRepository.findByDocId(docId);
     }
+
+    @PutMapping("/{id}/sign")
+    public Signature signDocument(@PathVariable Long id) {
+        Signature signature = signatureRepository.findById(id).orElseThrow();
+        signature.setStatus("SIGNED");
+        return signatureRepository.save(signature);
+    }
+
+    @PutMapping("/{id}/reject")
+    public Signature rejectDocument(
+            @PathVariable Long id,
+            @RequestParam String reason
+    ) {
+        Signature signature = signatureRepository.findById(id).orElseThrow();
+        signature.setStatus("REJECTED");
+        signature.setRejectionReason(reason);
+        return signatureRepository.save(signature);
+    }
 }
+

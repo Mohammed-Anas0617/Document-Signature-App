@@ -16,6 +16,7 @@ public class Signature {
     private Double y;
     private int page;
     private String status;
+    private String rejectionReason;
 
     public Long getId() { return id; }
     public Long getDocId() { return docId; }
@@ -30,4 +31,6 @@ public class Signature {
     public void setPage(int page) { this.page = page; }
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
+    public String getRejectionReason() { return rejectionReason; }
+    public void setRejectionReason(String rejectionReason) { this.rejectionReason = rejectionReason; }
 }
