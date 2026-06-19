@@ -8,8 +8,8 @@ export default function Login({ onLogin }) {
 
     const handleSubmit = async () => {
         const url = isRegister
-            ? "http://localhost:8080/auth/register"
-            : "http://localhost:8080/auth/login";
+            ? "https://signature-app-backend-b82o.onrender.com/auth/register"
+            : "https://signature-app-backend-b82o.onrender.com/auth/login";
 
         const res = await fetch(url, {
             method: "POST",

@@ -6,7 +6,7 @@ export default function DocumentList() {
     const token = localStorage.getItem("token");
 
     useEffect(() => {
-        fetch("http://localhost:8080/document", {
+        fetch("https://signature-app-backend-b82o.onrender.com/document", {
             headers: { Authorization: "Bearer " + token },
         })
             .then((res) => res.json())

@@ -5,7 +5,7 @@ export default function SignatureOverlay({ docId }) {
     const token = localStorage.getItem("token");
 
     useEffect(() => {
-        fetch(`http://localhost:8080/signature/${docId}`, {
+        fetch(`https://signature-app-backend-b82o.onrender.com/signature/${docId}`, {
             headers: {Authorization: "Bearer " + token},
         })
             .then((res) => res.json())
@@ -19,7 +19,7 @@ export default function SignatureOverlay({ docId }) {
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
 
-        fetch("http://localhost:8080/signature", {
+        fetch("https://signature-app-backend-b82o.onrender.com/signature", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
