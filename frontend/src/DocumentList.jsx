@@ -9,8 +9,17 @@ export default function DocumentList({ onLogout }) {
         fetch("https://signature-app-backend-b82o.onrender.com/document", {
             headers: { Authorization: "Bearer " + token },
         })
-            .then((res) => res.json())
-            .then((data) => { if (Array.isArray(data)) setDocuments(data); });
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error("Request failed with status " + res.status);
+                }
+                return res.json();
+            })
+            .then((data) => { if (Array.isArray(data)) setDocuments(data); })
+            .catch((err) => {
+                console.error("Failed to load documents:", err.message);
+                setDocuments([]);
+            });
     }, []);
 
     const filtered = filter === "ALL" ? documents :
