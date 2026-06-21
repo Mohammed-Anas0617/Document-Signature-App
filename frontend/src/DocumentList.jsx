@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function DocumentList() {
+export default function DocumentList({ onLogout }) {
     const [documents, setDocuments] = useState([]);
     const [filter, setFilter] = useState("ALL");
     const token = localStorage.getItem("token");
@@ -30,9 +30,17 @@ export default function DocumentList() {
         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8">
             <div className="max-w-3xl mx-auto">
 
-                <div className="mb-8">
-                    <h1 className="text-4xl font-bold text-indigo-800">📄 Document Signature App</h1>
-                    <p className="text-gray-500 mt-1">Manage and track your documents</p>
+                <div className="mb-8 flex justify-between items-start">
+                    <div>
+                        <h1 className="text-4xl font-bold text-indigo-800">Document Signature App</h1>
+                        <p className="text-gray-500 mt-1">Manage and track your documents</p>
+                    </div>
+                    <button
+                        onClick={onLogout}
+                        className="px-4 py-2 rounded-full text-sm font-semibold bg-red-100 text-red-700 border border-red-300 hover:bg-red-200 transition-all"
+                    >
+                        Logout
+                    </button>
                 </div>
 
                 <div className="flex gap-3 mb-6 flex-wrap">

@@ -7,13 +7,16 @@ import PDFPreview from "./PDFPreview";
 function App() {
     const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem("token"));
 
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+    };
     if (!loggedIn) {
         return <Login onLogin={() => setLoggedIn(true)} />;
     }
 
     return (
         <div>
-            <DocumentList />
+            <DocumentList onLogout={handleLogout} />
             <PDFPreview />
         </div>
     );
