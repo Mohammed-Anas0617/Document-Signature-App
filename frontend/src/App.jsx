@@ -8,7 +8,10 @@ function App() {
     const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem("token"));
 
     const handleLogout = () => {
+        console.log("Logout clicked");
         localStorage.removeItem("token");
+        setLoggedIn(false);
+        console.log("loggedIn should now be false");
     };
     if (!loggedIn) {
         return <Login onLogin={() => setLoggedIn(true)} />;
